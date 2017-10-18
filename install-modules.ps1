@@ -1,6 +1,6 @@
 # NB Execution policy needs to be set to RemoteSigned or Unrestricted for some of them using Set-ExecutionPolicy
 
-Install-Module posh-docker
+Install-Module posh-docker -Scope CurrentUser -Force
 Install-Module posh-git
 Install-Module posh-with
 Install-Module Pester
