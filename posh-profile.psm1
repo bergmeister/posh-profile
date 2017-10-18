@@ -30,6 +30,8 @@ Function Save-History($fileNameOrPath)
 Import-Module posh-docker
 Import-Module Jump.Location
 Import-Module PoShFuck # Slightly vulgar Typo Correcter
+Import-Module ("module_macaddress.psm1")
+
 Set-Alias f fuck
 Import-Module  posh-with
 Set-Alias w with
