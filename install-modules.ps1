@@ -14,8 +14,10 @@ Function Install-ModuleOnlyIfNotAlreadyInstalled($ModuleName)
     }
 }
 
-$profile
-Test-Path $profile
+if ($null -eq $PROFILE)
+{
+    $PROFILE = [System.IO.Path]::GetTempFileName() # to prevent AppVeyor from throwing an error when installing PoShFuck
+}
  
 Install-Module posh-docker       -Scope CurrentUser -Force
 Install-Module posh-git          -Scope CurrentUser -Force
