@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 install:
-  - ps:$PSVersionTable
+  - ps: $PSVersionTable
 
 build_script:
   - ps: Import-Module .\posh-profile.psm1
