@@ -13,6 +13,9 @@ Function Install-ModuleOnlyIfNotAlreadyInstalled($ModuleName)
         Write-Verbose "Module $($ModuleName) is already installed"
     }
 }
+
+$profile
+Test-Path $profile
  
 Install-Module posh-docker       -Scope CurrentUser -Force
 Install-Module posh-git          -Scope CurrentUser -Force
