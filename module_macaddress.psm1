@@ -6,27 +6,21 @@
     This script has two functions in it:
         * Update-MacAddressVendor
         * Get-MacAddressVendor
-
     Update-MacAddressVendor downloads the current vendor file and places it in a given directory, 
     determined by the $DocumentPath variable.
-
     Get-MacAddressVendor searches through the downloaded file for the three first octets of the MAC Address, 
     and hopefully retrieves the correct vendor of it. 
-
 .EXAMPLE
     # Update Vendor List
     Update-MacAddressVendor
-
     # Search through vendor list
     Get-MacAddressVendor -MacAddress '00-50-56-C0-00-00'
-
     ===================RESULT===================
     00:50:56	Vmware	VMware, Inc.
     ============================================
     
-
 .NOTES
-    Script written by CodeBarbarian
+    Script written by CodeBarbarian @ https://github.com/CodeBarbarian
 #>
 
 
@@ -38,31 +32,29 @@
 ################################# Script Config ##################################
 # -------------------------- Script Dependant Variables -------------------------#
 # Document Path - Where the vendor mac addresses textfile will be located
-$DocumentPath = ("c:$($ENV:HOMEPATH)\desktop")
+$DocumentPath = (Join-Path $ENV:HOMEPATH Desktop)
 ##################################################################################
 
-
-
 function Update-MacAddressVendor {
+    [cmdletbinding()] 
+    param()
+
     # Path to the wireshark repository
     $APIUrl = 'https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf;hb=HEAD'
 
     $WebClient = New-Object System.Net.WebClient
     $WebClient.DownloadFile($APIUrl, "$($DocumentPath)\vendor_macaddresses.txt")
 
-    Write-Host ("Update of MAC vendor list complete.") -ForegroundColor Green
+    Write-Verbose ("Update of MAC vendor list complete.")
 }
 
 function Get-MacAddressVendor {
+    [cmdletbinding()]
     param (
         [parameter(mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
         [string]$MacAddress
-    ) 
-
-    # Simple check for this one
-    if ([String]::IsNullOrWhiteSpace($MacAddress)) {
-        Write-Host ("The mac address can not be null or whitespace") -ForegroundColor RED
-    }
+    )
 
     # Remove everything we really do not need from the mac address
     $MacAddress = $MacAddress -replace "[-,.:]", ""
@@ -89,10 +81,7 @@ function Get-MacAddressVendor {
             # Check if the mac address is in the list
             if ($Matches.values -Match $MacAddress) {
                 # Give response viewing the entire line
-
-                Write-Host("===================RESULT===================") -ForegroundColor White
-                Write-Host($Line) -ForegroundColor Green
-                Write-Host("============================================") -ForegroundColor White
+                return $Line
             }
         }
     }
