@@ -1,4 +1,4 @@
-# posh-profile
+# posh-profile [![Build status](https://ci.appveyor.com/api/projects/status/fy8d2gihiflsks3m?svg=true)](https://ci.appveyor.com/project/bergmeister/posh-profile)
 A set of Windows PowerShell functions that make day to day life easier
 
 This is a collection of PowerShell profile helpers functions to improve efficiency.
