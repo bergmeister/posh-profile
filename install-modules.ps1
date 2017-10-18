@@ -10,7 +10,7 @@ Function Install-ModuleOnlyIfNotAlreadyInstalled($ModuleName)
     }
     else
     {
-        Write-Verbose "Module $($ModuleName)" is already installed"
+        Write-Verbose "Module $($ModuleName) is already installed"
     }
 }
  
