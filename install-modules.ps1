@@ -19,7 +19,7 @@ Install-Module posh-git          -Scope CurrentUser -Force
 Install-Module posh-with         -Scope CurrentUser -Force
 Install-ModuleOnlyIfNotAlreadyInstalled Pester
 Install-Module PSScriptAnalyzer  -Scope CurrentUser -Force
-Install-Module Jump-Location     -Scope CurrentUser -Force
+Install-Module Jump.Location     -Scope CurrentUser -Force
 
 # PoShFuck a slightly vulgar typo correection helper: https://github.com/mattparkes/PoShFuck
 Write-Verbose 'Installing PoShFuck'
