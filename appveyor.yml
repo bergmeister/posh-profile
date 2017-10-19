@@ -11,7 +11,7 @@ test_script:
   - ps: |
         Set-Location .\test
         $testResultsFile = ".\TestsResults.xml"
-        $results = Invoke-Pester -OutputFormat NUnitXml -OutputFile $testResultsFile -PassThru -Verbose
+        $results = Invoke-Pester -OutputFormat NUnitXml -OutputFile $testResultsFile -CodeCoverage @('.\macAddressUtils.psm1', '.\posh-profile.psm1') -PassThru -Verbose
         (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
         if ($results.FailedCount -gt 0)
         { 
