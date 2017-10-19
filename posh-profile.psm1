@@ -25,7 +25,7 @@ Function gh{(Get-History).CommandLine}
 Set-Alias hh gh
 Function Save-History($fileNameOrPath)
 {
-	if([string]::IsNullOrEmpty($fileNameOrPath))
+	if ([string]::IsNullOrEmpty($fileNameOrPath))
 	{
 		$fileNameOrPath = "$(Get-Date -f yyyy-MM-dd_HH-mm-ss).PowerShellHistory"
 	}
@@ -72,13 +72,16 @@ Set-Alias tp Test-Path
 
 Function Set-MsBuildExeVariablesForEnterpriseEdition
 {
-	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	[CmdletBinding(SupportsShouldProcess=$true)]
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseDeclaredVarsMoreThanAssignments",'')]
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidGlobalVars",'')]
+	Param()
 
 	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update --remote'"))
 	{
-		$script:msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
-		$script:msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
-		$script:msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+		$global:msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
+		$global:msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+		$global:msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
 	}
 }
 Set-MsBuildExeVariablesForEnterpriseEdition
@@ -161,7 +164,7 @@ Function Update-GitSubmodule()
 		git submodule update
 	}
 }
-Set-Alias update Update-GitSumodule
+Set-Alias update Update-GitSubmodule
 
 # GitFlow
 Function New-Feature
