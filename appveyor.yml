@@ -5,7 +5,7 @@ install:
   - ps: .\install-modules.ps1 -Verbose
 
 build_script:
-  - ps: Import-Module .\posh-profile.psm1
+  - ps: Import-Module .\posh-profile.psm1 -DisableNameChecking
 
 test_script:
   - ps: |
