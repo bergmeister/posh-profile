@@ -15,19 +15,3 @@ Describe 'posh-profile.psm1' {
     }
 }
 
-Describe 'posh-profile.psm1 tests that do not work in AppVeyor' -Tag 'NotAppVeyor' {
-    
-    It "Save-History produces file with history"  {
-        Get-ChildItem | Out-Null # invoke some command
-        try
-        {
-            $historyFile = 'myhistory.txt'
-            Save-History $historyFile
-            Get-Content $historyFile -Raw | Should BeLike '*Get-ChildItem*'
-        }
-        finally
-        {
-            Remove-Item $historyFile
-        }
-    }
-}
