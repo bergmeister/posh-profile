@@ -7,7 +7,8 @@ Describe 'macAddressUtils.psm1' {
         }
 
         It "Get-MacAddressVendor" {
-            $macAddress = Get-NetAdapter | Where Name -eq WiFi | Select -Expand MacAddress
-            Get-MacAddressVendor $macAddress | Should Not BeNullOrEmpty
+            $macAddress = Get-CimInstance win32_networkadapterconfiguration | Select-Object macaddress | Where-Object {
+                            ! [string]::IsNullOrEmpty($_.macaddress) }  | Select-Object -First 1
+            Get-MacAddressVendor $macAddress.macAddress | Should Not BeNullOrEmpty
         }
     }
