@@ -13,16 +13,16 @@ Describe 'posh-profile.psm1' {
     }
 
     It "Save-History produces file with history" {
-        $childItem = Get-ChildItem # invoke some command
+        Get-ChildItem | Out-Null # invoke some command
         try
         {
-            $tempFile = [System.IO.Path]::GetTempFileName()
-            Save-History $tempFile
-            Get-Content $tempFile -Raw | Should BeLike '*Get-ChildItem*'
+            $historyFile = 'myhistory.txt'
+            Save-History $historyFile
+            Get-Content $historyFile -Raw | Should BeLike '*Get-ChildItem*'
         }
         finally
         {
-            Remove-Item $tempFile
+            Remove-Item $historyFile
         }
     }
 }
