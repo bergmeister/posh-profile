@@ -1,6 +1,8 @@
 # NB Execution policy needs to be set to RemoteSigned or Unrestricted for some of them using Set-ExecutionPolicy
- [CmdletBinding()]Param()
- 
+[CmdletBinding()]
+[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidUsingInvokeExpression",'')] # Chocolatey and PoShFuck are installed using Invoke-Expression
+Param()
+
 Function Install-ModuleOnlyIfNotAlreadyInstalled($ModuleName)
 {
     if (-not (Get-Module -ListAvailable $ModuleName))

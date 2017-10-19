@@ -36,16 +36,20 @@ $DocumentPath = (Join-Path $ENV:HOMEPATH Desktop)
 ##################################################################################
 
 function Update-MacAddressVendor {
-    [cmdletbinding()] 
+    [CmdletBinding(SupportsShouldProcess=$true)] 
     param()
 
     # Path to the wireshark repository
     $APIUrl = 'https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf;hb=HEAD'
-
-    $WebClient = New-Object System.Net.WebClient
-    $WebClient.DownloadFile($APIUrl, "$($DocumentPath)\vendor_macaddresses.txt")
-
-    Write-Verbose ("Update of MAC vendor list complete.")
+    $downloadPath = "$($DocumentPath)\vendor_macaddresses.txt"
+    
+    if ($PSCmdlet.ShouldProcess("Updating Mac address vendor from url $($APIUrl) in $($downloadPath)"))
+    {
+        Write-Verbose "Updating MAC vendor list"
+        $WebClient = New-Object System.Net.WebClient
+        $WebClient.DownloadFile($APIUrl, $downloadPath)
+        Write-Verbose "Update of MAC vendor list complete"
+    }
 }
 
 function Get-MacAddressVendor {
