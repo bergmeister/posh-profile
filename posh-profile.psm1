@@ -36,7 +36,7 @@ Function Save-History($fileNameOrPath)
 Import-Module posh-docker
 Import-Module Jump.Location
 Import-Module PoShFuck # Slightly vulgar Typo Correcter
-Import-Module (Join-Path $PSScriptRoot "module_macaddress.psm1")
+Import-Module (Join-Path $PSScriptRoot "macaddressUtils.psm1")
 
 Set-Alias f fuck
 Import-Module  posh-with
@@ -69,6 +69,7 @@ Set-Alias analyse Invoke-ScriptAnalyzer
 Set-Alias analyze Invoke-ScriptAnalyzer
 
 Set-Alias tp Test-Path
+
 Function Set-MsBuildExeVariablesForEnterpriseEdition
 {
 	[CmdletBinding(SupportsShouldProcess=$true)] Param()
@@ -80,6 +81,7 @@ Function Set-MsBuildExeVariablesForEnterpriseEdition
 		$script:msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
 	}
 }
+Set-MsBuildExeVariablesForEnterpriseEdition
 
 # uses the DOS where.exe command similar to the which command in bash
 Function which

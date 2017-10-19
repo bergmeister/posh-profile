@@ -35,7 +35,8 @@
 $DocumentPath = (Join-Path $ENV:HOMEPATH Desktop)
 ##################################################################################
 
-function Update-MacAddressVendor {
+function Update-MacAddressVendor
+{
     [CmdletBinding(SupportsShouldProcess=$true)] 
     param()
 
@@ -52,7 +53,8 @@ function Update-MacAddressVendor {
     }
 }
 
-function Get-MacAddressVendor {
+function Get-MacAddressVendor
+{
     [cmdletbinding()]
     param (
         [parameter(mandatory=$true)]
@@ -72,7 +74,7 @@ function Get-MacAddressVendor {
     # Set the mac address to become the mac address in same format as wireshark uses
     $MacAddress = $Placeholder
     
-    # Let us just make sure we did not fuck up somewhere
+    # Let us just make sure we did not mess up somewhere
     $RegEx = '(?<macaddr>[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f])'
 
     # Get contents from file
@@ -90,6 +92,3 @@ function Get-MacAddressVendor {
         }
     }
 }
-
-Export-ModuleMember -Function Get-*
-Export-ModuleMember -Function Update-*
