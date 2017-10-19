@@ -19,7 +19,7 @@ test_script:
         (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
         $codeCoverage = $results.CodeCoverage.NumberOfCommandsExecuted /( $results.CodeCoverage.NumberOfCommandsExecuted  + $results.CodeCoverage.NumberOfCommandsMissed)
         Write-Verbose "Code Coverage: $($codeCoverage*100) %" -Verbose
-        Save-Module -Name VSTS -Path -RequiredVersion 1.0.189 .
+        Save-Module -Name VSTS -Path . -RequiredVersion 1.0.189
         Import-Module .\VSTS\1.0.189\ci\CodeCovIo.psd1
         Export-CodeCovIoJson -CodeCoverage $results.CodeCoverage -RepoRoot $repoRoot -Path 'codeCov.json'
         choco install -y codecov
