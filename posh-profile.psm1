@@ -25,7 +25,7 @@ Function gh{(Get-History).CommandLine}
 Set-Alias hh gh
 Function Save-History($fileNameOrPath)
 {
-	if([string]::IsNullOrEmpty($fileNameOrPath))
+	if ([string]::IsNullOrEmpty($fileNameOrPath))
 	{
 		$fileNameOrPath = "$(Get-Date -f yyyy-MM-dd_HH-mm-ss).PowerShellHistory"
 	}
@@ -72,7 +72,10 @@ Set-Alias tp Test-Path
 
 Function Set-MsBuildExeVariablesForEnterpriseEdition
 {
-	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	[CmdletBinding(SupportsShouldProcess=$true)]
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseDeclaredVarsMoreThanAssignments",'')]
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidGlobalVars",'')]
+	Param()
 
 	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update --remote'"))
 	{
@@ -161,7 +164,7 @@ Function Update-GitSubmodule()
 		git submodule update
 	}
 }
-Set-Alias update Update-GitSumodule
+Set-Alias update Update-GitSubmodule
 
 # GitFlow
 Function New-Feature
