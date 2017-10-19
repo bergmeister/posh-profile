@@ -22,11 +22,8 @@ test_script:
         Save-Module -Name VSTS -Path . -RequiredVersion 1.0.189
         Import-Module .\VSTS\1.0.189\ci\CodeCovIo.psd1
         Export-CodeCovIoJson -CodeCoverage $results.CodeCoverage -RepoRoot $repoRoot -Path 'codeCov.json'
-        choco install -y codecov
-        cd ..
-        .\codecov -f 'codeCov.json' -t 'fa2e7c3a-e65d-479a-872e-04d80549cdfe'
         if ($results.FailedCount -gt 0)
         { 
             throw "$($results.FailedCount) tests failed."
         }
-  - codecov -f "codeCov.json"
+  - codecov -f "codeCov.json" -t "fa2e7c3a-e65d-479a-872e-04d80549cdfe"
