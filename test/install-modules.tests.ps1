@@ -1,5 +1,14 @@
 Describe 'Modules are installed' {
-  It "Pester is installed" {
-      Get-Module -ListAvailable Pester | Should Not Be $bull
-  }
+
+    It "Module '<moduleName>' is installed" -TestCase @(
+        @{ moduleName = "Pester";  }
+        @{ moduleName = "posh-docker";  }
+        @{ moduleName = "posh-git"; }
+        @{ moduleName = "posh-with"; }
+        @{ moduleName = "PoShFuck"; }
+        @{ moduleName = "Jump.Location"; }
+        @{ moduleName = "PSScriptAnalyzer"; } ){
+        Param ($moduleName)
+          Get-Module -ListAvailable $moduleName | Should Not Be $null
+    }
 }
