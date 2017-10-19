@@ -4,13 +4,19 @@
 # ISE
 Function Set-LocationToCurrentIseItem
 {
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+
 	if($null -eq $psISE)
 	{
 		Write-Error "Function only supported in PowerShell ISE"
 	}
 	else
 	{
-		Set-Location (Split-Path $psISE.CurrentFile.FullPath -Parent)
+		$folderOfCurrentIseItem = (Split-Path $psISE.CurrentFile.FullPath -Parent)
+		if ($PSCmdlet.ShouldProcess("Setting location to $($folderOfCurrentIseItem)"))
+		{
+			Set-Location $folderOfCurrentIseItem
+		}
 	}
 }
 
@@ -63,15 +69,29 @@ Set-Alias analyse Invoke-ScriptAnalyzer
 Set-Alias analyze Invoke-ScriptAnalyzer
 
 Set-Alias tp Test-Path
+Function Set-MsBuildExeVariablesForEnterpriseEdition
+{
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
 
-$msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
-$msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
-$msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update --remote'"))
+	{
+		$script:msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
+		$script:msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+		$script:msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+	}
+}
 
 # uses the DOS where.exe command similar to the which command in bash
-Function which($program)
+Function which
 {
-	Invoke-Expression -Command "cmd.exe /C where $program"
+	[CmdletBinding()]
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidUsingInvokeExpression",'')]
+	Param
+	(
+		$program
+	)
+
+	Invoke-Expression -Command "cmd.exe /C where $($program)"
 }
 
 # Explorer
@@ -100,32 +120,71 @@ Function GitUpdate()
 }
 Function Update-GitRepo()
 {
-	git pull
-	git submodule update
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	
+	if ($PSCmdlet.ShouldProcess("Executing 'git pull' and 'git submodule update'"))
+	{
+		git pull
+		git submodule update
+	}
 }
 Set-Alias pull Update-GitRepo
-Function Checkout-GitRepo($argument)
+Function Checkout-GitRepo
 {
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseApprovedVerbs",'')]
+	Param
+	(
+		$argument
+	)
+
 	git checkout $argument
 	git submodule update
 }
 Set-Alias checkout Checkout-GitRepo
 Function Update-GitSubmoduleRemote()
 {
-	git submodule update --remote
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	
+	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update --remote'"))
+	{
+		git submodule update --remote
+	}
 }
-Function Update-GitSumodule(){ git submodule update}
+Function Update-GitSubmodule()
+{
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	
+	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update'"))
+	{
+		git submodule update
+	}
+}
 Set-Alias update Update-GitSumodule
 
 # GitFlow
-Function New-Feature($name)
+Function New-Feature
 {
-	git flow feature start $name
-	git submodule update
+	[CmdletBinding(SupportsShouldProcess=$true)]
+	Param
+	(
+		[Parameter(Mandatory=$true)]
+		$Name
+	)
+	
+	if ($PSCmdlet.ShouldProcess("Starting new GitFlow feature $($Name) and updating submodule"))
+	{
+		git flow feature start $Name
+		git submodule update
+	}
 }
-Function Upstream-BranchFromDevelop
+Function Update-BranchFromDevelop
 {
-	git checkout develop; git pull; git checkout -; git merge develop
+	[CmdletBinding(SupportsShouldProcess=$true)] Param()
+	
+	if ($PSCmdlet.ShouldProcess("Executing 'git checkout develop; git pull; git checkout -; git merge develop'"))
+	{
+		git checkout develop; git pull; git checkout -; git merge develop
+	}
 }
 
 # Git Branching
@@ -151,14 +210,20 @@ Function b($arguments)
 Function touch($arguments){b $arguments}
 
 # Modules
-Function Reimport-Module([string] $path)
+Function Reimport-Module
 {
-	if(!(Test-Path $path))
+	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseApprovedVerbs",'')]
+	Param
+	(
+		$Path
+	)
+
+	if(!(Test-Path $Path))
 	{
 		Write-Error "Module filepath '$path' does not exist as a path."
 	}
-	$moduleName = (Get-Item $path).BaseName
-	rmo  $moduleName
-	ipmo $path
+	$moduleName = (Get-Item $Path).BaseName
+	Remove-Module $moduleName
+	Import-Module $Path
 }
 New-Alias ripmo Reimport-Module
