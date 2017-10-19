@@ -16,12 +16,12 @@ Function Install-ModuleOnlyIfNotAlreadyInstalled($ModuleName)
     }
 }
 
-Install-Module posh-docker       -Scope CurrentUser -Force
-Install-Module posh-git          -Scope CurrentUser -Force
-Install-Module posh-with         -Scope CurrentUser -Force
+Install-ModuleOnlyIfNotAlreadyInstalled posh-docker       -Scope CurrentUser -Force
+Install-ModuleOnlyIfNotAlreadyInstalled posh-git          -Scope CurrentUser -Force
+Install-ModuleOnlyIfNotAlreadyInstalled posh-with         -Scope CurrentUser -Force
 Install-ModuleOnlyIfNotAlreadyInstalled Pester
-Install-Module PSScriptAnalyzer  -Scope CurrentUser -Force
-Install-Module Jump.Location     -Scope CurrentUser -Force
+Install-ModuleOnlyIfNotAlreadyInstalled PSScriptAnalyzer  -Scope CurrentUser -Force
+Install-ModuleOnlyIfNotAlreadyInstalled Jump.Location     -Scope CurrentUser -Force
 
 # Chocolatey: https://chocolatey.org/install
 Write-Verbose 'Installing chocolatey'
