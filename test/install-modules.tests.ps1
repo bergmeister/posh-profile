@@ -11,4 +11,8 @@ Describe 'Modules are installed' {
         Param ($moduleName)
           Get-Module -ListAvailable $moduleName | Should Not Be $null
     }
+
+    It "Chocolatey is installed" {
+      Get-Command choco | Should Not Be $null
+    }
 }
