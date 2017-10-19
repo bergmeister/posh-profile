@@ -6,3 +6,6 @@ install:
 
 build_script:
   - ps: Import-Module .\posh-profile.psm1
+
+test_script:
+  - ps: Invoke-Pester .\test
