@@ -21,7 +21,7 @@ test_script:
         Write-Verbose "Code Coverage: $($codeCoverage*100) %" -Verbose
         Save-Module -Name VSTS -Path . -RequiredVersion 1.0.189
         Import-Module .\VSTS\1.0.189\ci\CodeCovIo.psd1
-        Export-CodeCovIoJson -CodeCoverage $results.CodeCoverage -RepoRoot $repoRoot -Path 'codeCov.json'
+        Export-CodeCovIoJson -CodeCoverage $results.CodeCoverage -RepoRoot $env:APPVEYOR_BUILD_FOLDER -Path 'codeCov.json'
         if ($results.FailedCount -gt 0)
         { 
             throw "$($results.FailedCount) tests failed."
