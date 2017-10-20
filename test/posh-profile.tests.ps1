@@ -42,5 +42,12 @@ Describe 'posh-profile.psm1' {
         Set-MsBuildExeVariablesForEnterpriseEdition -WhatIf
     }
 
+    It "ShouldProcess for git helpers" {
+        Update-GitSubmoduleRemote -WhatIf
+        Update-GitSubmodule -WhatIf
+        New-Feature 'myfeatureName' -WhatIf
+        Update-BranchFromDevelop -WhatIf
+    }
+
 }
 

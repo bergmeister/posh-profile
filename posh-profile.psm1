@@ -150,7 +150,7 @@ Function Checkout-GitRepo
 	git submodule update
 }
 Set-Alias checkout Checkout-GitRepo
-Function Update-GitSubmoduleRemote()
+Function Update-GitSubmoduleRemote
 {
 	[CmdletBinding(SupportsShouldProcess=$true)] Param()
 	
