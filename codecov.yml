@@ -2,4 +2,4 @@ codecov:
   notify:
     require_ci_to_pass: no
   # baseline branch for reporting
-  branch: master
+  branch: bergmeister-codecovpatch-1
