@@ -65,7 +65,7 @@ NestedModules = @()
 #FunctionsToExport = '*'
  
 # Cmdlets to export from this module
-#CmdletsToExport = '*'
+CmdletsToExport = @('Get-MacAddressVendor', 'Update-MacAddressVendor')
  
 # Variables to export from this module
 #VariablesToExport = '*'
