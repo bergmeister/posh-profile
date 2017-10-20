@@ -31,16 +31,6 @@ Function Save-History($fileNameOrPath)
 	(Get-History).CommandLine | Out-File $fileNameOrPath
 }
 
-# Installed Modules
-Import-Module posh-docker
-Import-Module Jump.Location
-Import-Module  posh-with
-Import-Module PoShFuck # Slightly vulgar Typo Correcter
-
-# Own helpers modules
-Import-Module (Join-Path $PSScriptRoot "source\macaddressUtils.psm1")
-Import-Module (Join-Path $PSScriptRoot "source\dotnetCli\dotnetCli.psd1")
-
 Function Set-MsBuildExeVariablesForEnterpriseEdition
 {
 	[CmdletBinding(SupportsShouldProcess=$true)]

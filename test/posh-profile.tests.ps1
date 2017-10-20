@@ -57,5 +57,9 @@ Describe 'posh-profile' {
         Update-BranchFromDevelop -WhatIf
     }
 
+    It "History helper does not throw" {
+        gh
+    }
+
 }
 
