@@ -8,6 +8,7 @@ Describe 'dotnetCli' {
         try {
             $tempFolder = New-Item -ItemType Directory -Name tempdotnetCliTestFolder
             Set-Location $tempFolder
+            Get-Command dotnet | Should Not Be Null
             dotnet new mstest
             dotnetclean
             dotnetrestore
