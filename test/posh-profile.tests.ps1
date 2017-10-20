@@ -13,5 +13,20 @@ Describe 'posh-profile.psm1' {
     It "'which' works with cmd" {
         which 'cmd' | Should Contain 'cmd.exe'
     }
+
+    It "Set-LocationToCurrentIseItem works if ISE environment variable is set" {
+        $initialLocation = Get-Location
+        try {
+            $tempFolder = [System.IO.Path]::GetTempPath()
+            $currentLocation = (Get-Location).Path
+            "BHJN $currentLocation"
+            $global:psISE = @{CurrentFile=@{File=$PSScriptRoot}}
+            Set-LocationToCurrentIseItem
+            (Get-Location).Path | Should Be (Split-Path $PSScriptRoot)
+        }
+        catch {
+            Set-Location $initialLocation
+        }
+    }
 }
 
