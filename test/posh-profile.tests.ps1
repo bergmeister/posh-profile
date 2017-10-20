@@ -18,6 +18,11 @@ Describe 'posh-profile.psm1' {
         which 'cmd' | Should Contain 'cmd.exe'
     }
 
+    It 'Set-LocationToCurrentIseItem throws if not in ISE' {
+        $global:psISE = $null
+        { Set-LocationToCurrentIseItem } | Should throw
+    }
+
     It "Set-LocationToCurrentIseItem works if ISE environment variable is set" {
         
         $initialLocation = Get-Location
@@ -32,5 +37,10 @@ Describe 'posh-profile.psm1' {
             Set-Location $initialLocation
         }
     }
+
+    It "Set-MsBuildExeVariablesForEnterpriseEdition supports ShouldProcess" {
+        Set-MsBuildExeVariablesForEnterpriseEdition -WhatIf
+    }
+
 }
 

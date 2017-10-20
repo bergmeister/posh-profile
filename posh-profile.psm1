@@ -81,7 +81,7 @@ Function Set-MsBuildExeVariablesForEnterpriseEdition
 	$msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
 	$msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
 
-	if ($PSCmdlet.ShouldProcess("Setting global MsBuild variables '$($msBuildVS2015)', '$($msBuildVS2017)' and '$(msBuildVS2017Preview)'"))
+	if ($PSCmdlet.ShouldProcess("Setting global MsBuild variables '$($msBuildVS2015)', '$($msBuildVS2017)' and '$($msBuildVS2017Preview)'"))
 	{
 		$global:msBuildVS2015        = $msBuildVS2015
 		$global:msBuildVS2017        = $msBuildVS2017
