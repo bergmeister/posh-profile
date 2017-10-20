@@ -8,7 +8,7 @@ Function Set-LocationToCurrentIseItem
 
 	if ($null -eq $psISE)
 	{
-		Write-Error "Function only supported in PowerShell ISE"
+		throw "Function only supported in PowerShell ISE"
 	}
 	else
 	{
