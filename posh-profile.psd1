@@ -1,17 +1,17 @@
 #
-# Module manifest for module 'dotnetCli'
+# Module manifest for module 'posh-profile'
 #
  
 @{
  
 # Script module or binary module file associated with this manifest
-RootModule = 'dotnetCli.psm1'
+RootModule = 'posh-profile.psm1'
  
 # Version number of this module.
 ModuleVersion = '1.0'
  
 # ID used to uniquely identify this module
-GUID = '2fed0871-56b7-445d-91b9-dfac476430ca'
+GUID = '6b3bd6b6-a4c0-45e6-a023-72ddda10c1f4'
  
 # Author of this module
 Author = 'Christoph Bergmeister'
@@ -23,7 +23,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2017 Christoph Bergmeister. All rights reserved.'
  
 # Description of the functionality provided by this module
-Description = 'Wrappers for the dotnet CLI'
+Description = 'A collection of useful helpers especially for the PowerShell profile.'
  
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = ''
@@ -50,7 +50,7 @@ RequiredModules = @()
 RequiredAssemblies = @()
  
 # Script files (.ps1) that are run in the caller's environment prior to importing this module
-ScriptsToProcess = '.\dotnetCliAliases.ps1'
+ScriptsToProcess = '.\poshprofileAliases.ps1'
  
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @()

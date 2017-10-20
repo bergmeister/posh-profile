@@ -5,7 +5,7 @@ install:
   - ps: .\install-modules.ps1 -Verbose
 
 build_script:
-  - ps: Import-Module .\posh-profile.psm1 -DisableNameChecking
+  - ps: Import-Module .\posh-profile.psd1 -DisableNameChecking
 
 after_build:
   - choco install codecov

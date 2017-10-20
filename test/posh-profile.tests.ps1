@@ -2,10 +2,10 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars", "")]
 param()
 
-Describe 'posh-profile.psm1' {
+Describe 'posh-profile' {
     
     It "Can import module" {
-        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'posh-profile.psm1') -DisableNameChecking
+        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'posh-profile.psd1') -DisableNameChecking
     }
 
     It "Set-MsBuildExeVariablesForEnterpriseEdition has set variables" {

@@ -1,5 +1,5 @@
 # This module provides a lot of helpers for common tasks and is designed to minimize keystrokes.
-# Therefore unapproved verbs are used, therefore I suggest to import the module as Import-Module 'Path\To\posh-profile.psm1' 3> $null
+# Therefore unapproved verbs are used, therefore I suggest to import the module as Import-Module 'Path\To\posh-profile.psd1' 3> $null
 
 # ISE
 Function Set-LocationToCurrentIseItem
@@ -22,7 +22,6 @@ Function Set-LocationToCurrentIseItem
 
 # History
 Function gh{(Get-History).CommandLine}
-Set-Alias hh gh
 Function Save-History($fileNameOrPath)
 {
 	if ([string]::IsNullOrEmpty($fileNameOrPath))
@@ -35,27 +34,12 @@ Function Save-History($fileNameOrPath)
 # Installed Modules
 Import-Module posh-docker
 Import-Module Jump.Location
+Import-Module  posh-with
 Import-Module PoShFuck # Slightly vulgar Typo Correcter
+
+# Own helpers modules
 Import-Module (Join-Path $PSScriptRoot "source\macaddressUtils.psm1")
 Import-Module (Join-Path $PSScriptRoot "source\dotnetCli\dotnetCli.psd1")
-
-Set-Alias f fuck
-Import-Module  posh-with
-Set-Alias w with
-
-# Vim
-Set-Alias vim "${env:ProgramFiles(x86)}\vim\vim80\vim.exe"
-Set-Alias vi vim
-Set-Alias v vim
-
-# PSScriptAnalyzer
-Set-Alias CA Invoke-ScriptAnalyzer
-Set-Alias PSCA Invoke-ScriptAnalyzer
-Set-Alias analyse Invoke-ScriptAnalyzer
-Set-Alias analyse Invoke-ScriptAnalyzer
-Set-Alias analyze Invoke-ScriptAnalyzer
-
-Set-Alias tp Test-Path
 
 Function Set-MsBuildExeVariablesForEnterpriseEdition
 {
