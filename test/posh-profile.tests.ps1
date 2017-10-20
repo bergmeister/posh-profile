@@ -23,7 +23,6 @@ Describe 'posh-profile.psm1' {
         $initialLocation = Get-Location
         try {
             $tempFolder = [System.IO.Path]::GetTempPath()
-            $currentLocation = (Get-Location).Path
             $global:psISE = @{CurrentFile=@{}}
             $global:psISE.CurrentFile.Add('FullPath',$tempFolder)
             Set-LocationToCurrentIseItem
