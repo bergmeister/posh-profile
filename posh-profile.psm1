@@ -6,7 +6,7 @@ Function Set-LocationToCurrentIseItem
 {
 	[CmdletBinding(SupportsShouldProcess=$true)] Param()
 
-	if($null -eq $psISE)
+	if ($null -eq $psISE)
 	{
 		Write-Error "Function only supported in PowerShell ISE"
 	}
@@ -77,11 +77,15 @@ Function Set-MsBuildExeVariablesForEnterpriseEdition
 	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidGlobalVars",'')]
 	Param()
 
-	if ($PSCmdlet.ShouldProcess("Executing 'git submodule update --remote'"))
+	$msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
+	$msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+	$msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+
+	if ($PSCmdlet.ShouldProcess("Setting global MsBuild variables '$($msBuildVS2015)', '$($msBuildVS2017)' and '$(msBuildVS2017Preview)'"))
 	{
-		$global:msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
-		$global:msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
-		$global:msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+		$global:msBuildVS2015        = $msBuildVS2015
+		$global:msBuildVS2017        = $msBuildVS2017
+		$global:msBuildVS2017Preview = $msBuildVS2017Preview
 	}
 }
 Set-MsBuildExeVariablesForEnterpriseEdition
