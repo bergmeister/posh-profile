@@ -36,7 +36,8 @@ Function Save-History($fileNameOrPath)
 Import-Module posh-docker
 Import-Module Jump.Location
 Import-Module PoShFuck # Slightly vulgar Typo Correcter
-Import-Module (Join-Path $PSScriptRoot "macaddressUtils.psm1")
+Import-Module (Join-Path $PSScriptRoot "source\macaddressUtils.psm1")
+Import-Module (Join-Path $PSScriptRoot "source\dotnetCli\dotnetCli.psd1")
 
 Set-Alias f fuck
 Import-Module  posh-with
@@ -46,20 +47,6 @@ Set-Alias w with
 Set-Alias vim "C:\Program Files (x86)\vim\vim80\vim.exe"
 Set-Alias vi vim
 Set-Alias v vim
-
-# Dotnet Core CLI
-Function dotnetclean($argument)   {dotnet clean $argument}
-Function dotnetrestore($argument) {dotnet restore $argument}
-Function dotnetbuild($argument)   {dotnet build $argument}
-Function dotnettest($argument)    {dotnet test $argument}
-Function dotnetpublish($argument) {dotnet publish $argument}
-Set-Alias dnc dotnetclean
-Set-Alias dnr dotnetrestore
-Set-Alias dnb dotnetbuild
-Set-Alias dnt dotnettest
-Set-Alias dnp dotnetpublish
-Set-Alias dn dotnet
-Set-Alias d dotnet
 
 # PSScriptAnalyzer
 Set-Alias CA Invoke-ScriptAnalyzer
@@ -127,7 +114,7 @@ Function GitUpdate()
 	git pull --ff-only
 	git submodule update
 }
-Function Update-GitRepo()
+Function Update-GitRepo
 {
 	[CmdletBinding(SupportsShouldProcess=$true)] Param()
 	
@@ -159,7 +146,7 @@ Function Update-GitSubmoduleRemote
 		git submodule update --remote
 	}
 }
-Function Update-GitSubmodule()
+Function Update-GitSubmodule
 {
 	[CmdletBinding(SupportsShouldProcess=$true)] Param()
 	

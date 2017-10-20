@@ -45,6 +45,7 @@ Describe 'posh-profile.psm1' {
     It "ShouldProcess for git helpers" {
         Update-GitSubmoduleRemote -WhatIf
         Update-GitSubmodule -WhatIf
+        Update-GitRepo -WhatIf
         New-Feature 'myfeatureName' -WhatIf
         Update-BranchFromDevelop -WhatIf
     }
