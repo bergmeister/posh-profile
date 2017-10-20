@@ -1,7 +1,7 @@
 Describe 'macAddressUtils.psm1' {
 
     It "imports OK" {
-        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'source\macAddressUtils.psm1')
+        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'source\macAddressUtils.psd1')
     }
     
     It "Update-MacAddressVendor does not throw" {
