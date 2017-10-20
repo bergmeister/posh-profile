@@ -44,7 +44,7 @@ CLRVersion = ''
 ProcessorArchitecture = ''
  
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('Jump.Location', 'posh-docker', 'posh-with', 'PoShFuck, source\macaddressUtils.psm1, 'source\macaddressUtils.psm1', 'source\dotnetCli\dotnetCli.psd1')
+RequiredModules =  @()
  
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
