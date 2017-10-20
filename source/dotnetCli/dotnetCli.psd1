@@ -5,7 +5,7 @@
 @{
  
 # Script module or binary module file associated with this manifest
-ModuleToProcess = 'dotnetCli.psm1'
+RootModule = 'dotnetCli.psm1'
  
 # Version number of this module.
 ModuleVersion = '1.0'
