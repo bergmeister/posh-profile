@@ -12,6 +12,6 @@ They are focussed on 3 goals:
 
 The intend is that you just import the module as:
 ```
-Import-Module 'Path\To\posh-profile.psm1' -DisableNameChecking
+Import-Module 'Path\To\posh-profile.psd1' -DisableNameChecking
 ```
 You will then probably get some errors because you haven't installed some of the external modules that get imported. Feel free to either remove those imports or install the module by looking up the install command in `install-modules.ps1`

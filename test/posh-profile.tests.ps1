@@ -2,10 +2,10 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars", "")]
 param()
 
-Describe 'posh-profile.psm1' {
+Describe 'posh-profile' {
     
     It "Can import module" {
-        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'posh-profile.psm1') -DisableNameChecking
+        Import-Module (Join-Path (Split-Path $PSScriptRoot) 'posh-profile.psd1') -DisableNameChecking
     }
 
     It "Set-MsBuildExeVariablesForEnterpriseEdition has set variables" {
@@ -42,11 +42,23 @@ Describe 'posh-profile.psm1' {
         Set-MsBuildExeVariablesForEnterpriseEdition -WhatIf
     }
 
+    It "Set-MsBuildExeVariablesForEnterpriseEdition sets variables" {
+        Set-MsBuildExeVariablesForEnterpriseEdition
+        $msBuildVS2015        | Should Not BeNullOrEmpty
+        $msBuildVS2017        | Should Not BeNullOrEmpty
+        $msBuildVS2017Preview | Should Not BeNullOrEmpty
+    }
+
     It "ShouldProcess for git helpers" {
         Update-GitSubmoduleRemote -WhatIf
         Update-GitSubmodule -WhatIf
+        Update-GitRepo -WhatIf
         New-Feature 'myfeatureName' -WhatIf
         Update-BranchFromDevelop -WhatIf
+    }
+
+    It "History helper does not throw" {
+        gh
     }
 
 }
