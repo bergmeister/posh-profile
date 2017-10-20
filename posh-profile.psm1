@@ -44,7 +44,7 @@ Import-Module  posh-with
 Set-Alias w with
 
 # Vim
-Set-Alias vim "C:\Program Files (x86)\vim\vim80\vim.exe"
+Set-Alias vim "${env:ProgramFiles(x86)}\vim\vim80\vim.exe"
 Set-Alias vi vim
 Set-Alias v vim
 
@@ -64,9 +64,9 @@ Function Set-MsBuildExeVariablesForEnterpriseEdition
 	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidGlobalVars",'')]
 	Param()
 
-	$msBuildVS2015        = 'C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe'
-	$msBuildVS2017        = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
-	$msBuildVS2017Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe'
+	$msBuildVS2015        = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
+	$msBuildVS2017        = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
+	$msBuildVS2017Preview = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
 
 	if ($PSCmdlet.ShouldProcess("Setting global MsBuild variables '$($msBuildVS2015)', '$($msBuildVS2017)' and '$($msBuildVS2017Preview)'"))
 	{

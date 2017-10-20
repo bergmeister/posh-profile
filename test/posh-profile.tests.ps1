@@ -42,6 +42,13 @@ Describe 'posh-profile.psm1' {
         Set-MsBuildExeVariablesForEnterpriseEdition -WhatIf
     }
 
+    It "Set-MsBuildExeVariablesForEnterpriseEdition sets variables" {
+        Set-MsBuildExeVariablesForEnterpriseEdition
+        $msBuildVS2015        | Should Not BeNullOrEmpty
+        $msBuildVS2017        | Should Not BeNullOrEmpty
+        $msBuildVS2017Preview | Should Not BeNullOrEmpty
+    }
+
     It "ShouldProcess for git helpers" {
         Update-GitSubmoduleRemote -WhatIf
         Update-GitSubmodule -WhatIf
