@@ -30,8 +30,8 @@ Describe 'gitUtils' {
             Update-GitRepo
             Update-GitSubmoduleRemote
             Update-GitSubmodule
-            New-Branch 'mybranchName' 2>&1      
-            git flow init -d     
+            New-Branch 'develop' 2>&1
+            git flow init -d 2>&1
             New-Feature 'myfeaturename' 
         }
         finally {
