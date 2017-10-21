@@ -76,6 +76,10 @@ Describe 'posh-profile' {
         # Get-Module gitUtils | Should Not Be $null # TODO: find out why this fails in CI
     }
 
+    It "ReImport-Module throws if path is invalid" {
+        { ReImport-Module .\ModuleThatDoesNotExists.psd1 } | Should throw
+    }
+
     It "touch creates a file" {
         try
         {
