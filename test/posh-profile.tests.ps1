@@ -124,7 +124,8 @@ Describe 'posh-profile' {
     }
 
     It "WSL wrapper for bash" {
-        b 'uname' | Should be 'Linux'
+        $whoami = whoami
+        b 'whoami' | Should Be $whoami
     }
 
 }
