@@ -32,7 +32,7 @@
 .Synopsis
    Where the vendor mac addresses textfile will be located
 #>
-Get-DefaultDocumentPath
+function Get-DefaultDocumentPath
 {
     return (Join-Path $ENV:HOMEPATH Desktop)
 }
