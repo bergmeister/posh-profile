@@ -14,7 +14,7 @@ Describe 'gitUtils' {
         Update-GitSubmoduleRemote -WhatIf
         New-Feature myfeatureName -WhatIf
         Update-BranchFromDevelop -WhatIf
-        New-RemoteBranch() -WhatIf
+        New-RemoteBranch -WhatIf
     }
     
     It "git Command wrappers" {
