@@ -9,7 +9,7 @@ Describe 'dotnetCli' {
             $tempFolder = New-Item -ItemType Directory -Name tempdotnetCliTestFolder
             Set-Location $tempFolder
             Get-Command dotnet | Should Not Be Null
-            dotnet new xunit # this does not work in CI unfortunately
+            dotnet new xunit  2>&1 # this throws a red herring error in Appveyor: https://github.com/appveyor/ci/issues/1873
             dotnetclean
             dotnetrestore
             dotnetbuild
