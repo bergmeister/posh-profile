@@ -13,7 +13,7 @@ after_build:
 test_script:
   - ps: |
         # Pester 
-        Get-Module Pester -ListAvailable # Show Pester version
+        Get-Module Pester -ListAvailable # Show Pester version (should be 3.4)
         $testResultsFile = ".\TestsResults.xml"
         $results = Invoke-Pester -Path .\test -ExcludeTag 'NotAppVeyor' -OutputFormat NUnitXml -OutputFile $testResultsFile -CodeCoverage @(
              (Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath 'source\*.psm1'),

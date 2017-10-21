@@ -1,4 +1,4 @@
-This folder contains Pester tests written using version 3.
+This folder contains Pester tests written using version 3.4
 You can install Pester via `Install-Module Pester -Scope CurrentUser` and run the tests in this directory simply by executing:
 
 ```Invoke-Pester```
