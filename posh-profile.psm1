@@ -76,7 +76,7 @@ Function b($arguments)
 Function touch($arguments){b $arguments}
 
 # Modules
-Function Reimport-Module
+Function ReImport-Module
 {
 	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseApprovedVerbs",'')]
 	Param
@@ -84,10 +84,11 @@ Function Reimport-Module
 		$Path
 	)
 
-	if(!(Test-Path $Path))
+	if (!(Test-Path $Path))
 	{
-		Write-Error "Module filepath '$path' does not exist as a path."
+		Write-Error "Module filepath '$Path' does not exist as a path."
 	}
+
 	$moduleName = (Get-Item $Path).BaseName
 	Remove-Module $moduleName
 	Import-Module $Path

@@ -49,6 +49,17 @@ Describe 'posh-profile' {
 
     It "Explorer test" {
         e
+        e ([System.IO.Path]::GetTempPath())
+        e .
+    }
+
+    It "reimports module does not throw" {
+        $gitUtilsModule = [System.IO.Path]::Combine((Split-Path $PSScriptRoot), 'source\gitUtils\gitUtils.psd1') 
+        $gitUtilsModule | Should Exist
+        write-host $gitUtilsModule
+        Import-Module $gitUtilsModule
+        ReImport-Module $gitUtilsModule
+        Get-Module gitUtils | Should Not Be $null
     }
 
 }
