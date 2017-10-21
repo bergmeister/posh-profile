@@ -16,6 +16,7 @@ Describe 'dotnetCli' {
             dotnettest
             dotnetpublish
             Get-ChildItem 'publish' -recurse | Should Exist
+            Write-Host "-----------DOTNET TEST PASSED---------"
         }
         finally {
             Set-Location ..
