@@ -7,11 +7,12 @@ A set of Windows PowerShell functions that make day to day life easier
 This is a collection of PowerShell profile helpers functions to improve efficiency.
 They are focussed on 3 goals:
 - Providing cmdlets for boilerplate PowerShell code that is needed for everyday tasks
-- Provide short aliases also known as PowerShell-Fu
-- Provide a list of useful external modules.
+- Provide short aliases to improve your PowerShell-Fu
+- Provide a list of useful external modules (see `install-modules.ps1`) and make it faster to get started on a new machine.
 
-The intend is that you just import the module as:
+The intend is that you just take the content of the `source` folder, install the required modules using `.\install-modules.ps1` (or modify as you wish) and import the module in your PowerShell profile as follows:
 ```
+
 Import-Module 'Path\To\posh-profile.psd1' -DisableNameChecking
 ```
 You will then probably get some errors because you haven't installed some of the external modules that get imported. Feel free to either remove those imports or install the module by looking up the install command in `install-modules.ps1`
