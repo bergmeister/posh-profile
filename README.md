@@ -1,6 +1,6 @@
 # posh-profile
 
-[![Build status](https://ci.appveyor.com/api/projects/status/fy8d2gihiflsks3m?svg=true)](https://ci.appveyor.com/project/bergmeister/posh-profile) [![AppVeyor tests](http://flauschig.ch/batch.php?type=tests&account=bergmeister&slug=posh-profile)](https://ci.appveyor.com/project/bergmeister/posh-profile/build/tests) [![codecov](https://codecov.io/gh/bergmeister/posh-profile/branch/master/graph/badge.svg)](https://codecov.io/gh/bergmeister/posh-profile) [![PSScriptAnalyzer](https://img.shields.io/badge/Linter-PSScriptAnalyzer-brightgreen.svg)](http://google.com) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build status](https://ci.appveyor.com/api/projects/status/fy8d2gihiflsks3m?svg=true)](https://ci.appveyor.com/project/bergmeister/posh-profile) [![AppVeyor tests](http://flauschig.ch/batch.php?type=tests&account=bergmeister&slug=posh-profile)](https://ci.appveyor.com/project/bergmeister/posh-profile/build/tests) [![codecov](https://codecov.io/gh/bergmeister/posh-profile/branch/master/graph/badge.svg)](https://codecov.io/gh/bergmeister/posh-profile) [![PSScriptAnalyzer](https://img.shields.io/badge/Linter-PSScriptAnalyzer-blue.svg)](http://google.com) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 A set of Windows PowerShell functions that make day to day life easier
 
