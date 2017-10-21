@@ -50,7 +50,7 @@ Describe 'posh-profile' {
     It "Save-History" {
         try
         {
-            $tempfile = [System.IO.Path]::GetTempFile()
+            $tempfile = [System.IO.Path]::GetTempFileName()
             Save-History $tempfile
             Get-Content $tempfile -Raw | Should Contain 'GetTempFile'
         }
