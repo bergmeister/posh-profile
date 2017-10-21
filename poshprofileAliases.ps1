@@ -1,5 +1,7 @@
 Set-Alias tp Test-Path
 
+New-Alias ripmo Reimport-Module
+
 Set-Alias hh gh  # history helper to show non truncated history
 
 Set-Alias f fuck # from PoSHFuck module

@@ -1,17 +1,17 @@
 #
-# Module manifest for module 'posh-profile'
+# Module manifest for module 'gitUtils'
 #
  
 @{
  
 # Script module or binary module file associated with this manifest
-RootModule = 'posh-profile.psm1'
+RootModule = 'gitUtils.psm1'
  
 # Version number of this module.
 ModuleVersion = '1.0'
  
 # ID used to uniquely identify this module
-GUID = '6b3bd6b6-a4c0-45e6-a023-72ddda10c1f4'
+GUID = '571dcd1a-1469-44a5-aeff-a7e91878f72e'
  
 # Author of this module
 Author = 'Christoph Bergmeister'
@@ -23,7 +23,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2017 Christoph Bergmeister. All rights reserved.'
  
 # Description of the functionality provided by this module
-Description = 'A collection of useful helpers especially for the PowerShell profile.'
+Description = 'Wrappers for git commands'
  
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = ''
@@ -44,16 +44,13 @@ CLRVersion = ''
 ProcessorArchitecture = ''
  
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('Jump.Location', 'posh-docker', 'posh-with', 'PoShFuck',
-                    "$PSScriptRoot\source\macAddressUtils\macAddressUtils.psd1",
-                    '.\source\dotnetCli\dotnetCli.psd1',
-                    '.\source\gitUtils\gitUtils.psd1')
+RequiredModules =  @()
  
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
  
 # Script files (.ps1) that are run in the caller's environment prior to importing this module
-ScriptsToProcess = @('.\poshprofileAliases.ps1', '.\poshProfileVariables.ps1')
+ScriptsToProcess = '.\gitUtilsAliases.ps1'
  
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @()
@@ -71,7 +68,7 @@ NestedModules = @()
 #CmdletsToExport = '*'
  
 # Variables to export from this module
-VariablesToExport = @('msBuildVS2015', 'msBuildVS2017', 'msBuildVS2017Preview')
+#VariablesToExport = '*'
  
 # Aliases to export from this module
 #AliasesToExport = '*'
