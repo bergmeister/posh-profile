@@ -31,25 +31,6 @@ Function Save-History($fileNameOrPath)
 	(Get-History).CommandLine | Out-File $fileNameOrPath
 }
 
-Function Set-MsBuildExeVariablesForEnterpriseEdition
-{
-	[CmdletBinding(SupportsShouldProcess=$true)]
-	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseDeclaredVarsMoreThanAssignments",'')]
-	[Diagnostics.CodeAnalysis.SuppressMessage("PSAvoidGlobalVars",'')]
-	Param()
-
-	$msBuildVS2015        = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
-	$msBuildVS2017        = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
-	$msBuildVS2017Preview = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Preview\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
-
-	if ($PSCmdlet.ShouldProcess("Setting global MsBuild variables '$($msBuildVS2015)', '$($msBuildVS2017)' and '$($msBuildVS2017Preview)'"))
-	{
-		$global:msBuildVS2015        = $msBuildVS2015
-		$global:msBuildVS2017        = $msBuildVS2017
-		$global:msBuildVS2017Preview = $msBuildVS2017Preview
-	}
-}
-
 # uses the DOS where.exe command similar to the which command in bash
 Function which
 {

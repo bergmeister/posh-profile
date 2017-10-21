@@ -53,7 +53,7 @@ RequiredModules = @('Jump.Location', 'posh-docker', 'posh-with', 'PoShFuck',
 RequiredAssemblies = @()
  
 # Script files (.ps1) that are run in the caller's environment prior to importing this module
-ScriptsToProcess = '.\poshprofileAliases.ps1'
+ScriptsToProcess = @('.\poshprofileAliases.ps1', '.\poshProfileVariables.ps1')
  
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @()
