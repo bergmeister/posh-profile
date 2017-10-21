@@ -30,7 +30,9 @@ Describe 'gitUtils' {
             Update-GitRepo
             Update-GitSubmoduleRemote
             Update-GitSubmodule
-            New-Branch 'develop' 2>&1       
+            New-Branch 'mybranchName' 2>&1      
+            git flow init -d     
+            New-Feature 'myfeaturename' 
         }
         finally {
             Set-Location $initialLocation
@@ -38,18 +40,4 @@ Describe 'gitUtils' {
         }
     }
 
-    It "gitflow command wrappers" {
-        try {
-            $initialLocation = (Get-Location).Path
-            $tempFolder = New-Item -ItemType Directory -Name tempgitUtilsTestFolder
-            Set-Location $tempFolder
-            git init
-            git flow init -d     
-            New-Feature 'myfeaturename'
-        }
-        finally {
-            Set-Location $initialLocation
-            Remove-Item $tempFolder -Recurse -Force
-        }
-    }
 }
