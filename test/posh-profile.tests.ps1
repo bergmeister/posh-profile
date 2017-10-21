@@ -49,14 +49,6 @@ Describe 'posh-profile' {
         $msBuildVS2017Preview | Should Not BeNullOrEmpty
     }
 
-    It "ShouldProcess for git helpers" {
-        Update-GitSubmoduleRemote -WhatIf
-        Update-GitSubmodule -WhatIf
-        Update-GitRepo -WhatIf
-        New-Feature 'myfeatureName' -WhatIf
-        Update-BranchFromDevelop -WhatIf
-    }
-
     It "History helper does not throw" {
         gh
     }
