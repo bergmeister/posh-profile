@@ -31,6 +31,20 @@ Describe 'gitUtils' {
             Update-GitSubmoduleRemote
             Update-GitSubmodule
             New-Branch 'develop' 2>&1       
+        }
+        finally {
+            Set-Location $initialLocation
+            Remove-Item $tempFolder -Recurse -Force
+        }
+    }
+
+    It "gitflow command wrappers" {
+        try {
+            $initialLocation = (Get-Location).Path
+            $tempFolder = New-Item -ItemType Directory -Name tempgitUtilsTestFolder
+            Set-Location $tempFolder
+            git init
+            git flow init -d     
             New-Feature 'myfeaturename'
         }
         finally {
