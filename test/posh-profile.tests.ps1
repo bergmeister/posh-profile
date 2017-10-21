@@ -56,6 +56,7 @@ Describe 'posh-profile' {
     It "reimports module does not throw" {
         $gitUtilsModule = [System.IO.Path]::Combine((Split-Path $PSScriptRoot), 'source\gitUtils\gitUtils.psd1') 
         $gitUtilsModule | Should Exist
+        Remove-Module gitUtils -Force
         Import-Module $gitUtilsModule
         ReImport-Module $gitUtilsModule
         Get-Module gitUtils | Should Not Be $null
