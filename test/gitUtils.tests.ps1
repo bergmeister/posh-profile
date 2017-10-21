@@ -31,11 +31,17 @@ Describe 'gitUtils' {
             Update-GitSubmoduleRemote
             Update-GitSubmodule
             New-Branch 'develop' 2>&1
-            New-Branch 'feature' 2>&1           
+            $currentBranch = &git rev-parse --abbrev-ref HEAD
+            $currentBranch | Should Be 'develop'
+            git flow init -d 2>&1
+            New-Feature 'myfeaturename' 2>&1
+            $currentBranch = &git rev-parse --abbrev-ref HEAD
+            $currentBranch | Should Be 'feature/myfeaturename'
         }
         finally {
             Set-Location $initialLocation
             Remove-Item $tempFolder -Recurse -Force
         }
     }
+
 }

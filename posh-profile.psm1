@@ -87,7 +87,7 @@ Function ReImport-Module
 
 	if (!(Test-Path $Path))
 	{
-		Write-Error "Module filepath '$Path' does not exist as a path."
+		throw "Module filepath '$Path' does not exist as a path."
 	}
 
 	$moduleName = (Get-Item $Path).BaseName

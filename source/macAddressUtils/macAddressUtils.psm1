@@ -23,22 +23,27 @@
     Script written by CodeBarbarian @ https://github.com/CodeBarbarian
 #>
 
-
-
-# Incase of a proxy
-[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
-
-
-################################# Script Config ##################################
-# -------------------------- Script Dependant Variables -------------------------#
-# Document Path - Where the vendor mac addresses textfile will be located
-$DocumentPath = (Join-Path $ENV:HOMEPATH Desktop)
-##################################################################################
+<#
+.Synopsis
+   Where the vendor mac addresses textfile will be located
+#>
+function Get-DefaultDocumentPath
+{
+    return (Join-Path $ENV:HOMEPATH Desktop)
+}
 
 function Update-MacAddressVendor
 {
     [CmdletBinding(SupportsShouldProcess=$true)] 
-    param()
+    param
+    (
+        $DocumentPath
+    )
+
+    if ([string]::IsNullOrEmpty)
+    {
+        $DocumentPath = Get-DefaultDocumentPath
+    }
 
     # Path to the wireshark repository
     $APIUrl = 'https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf;hb=HEAD'
@@ -59,8 +64,15 @@ function Get-MacAddressVendor
     param (
         [parameter(mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [string]$MacAddress
+        [string]$MacAddress,
+
+        $DocumentPath
     )
+
+    if ([string]::IsNullOrEmpty)
+    {
+        $DocumentPath = Get-DefaultDocumentPath
+    }
 
     # Remove everything we really do not need from the mac address
     $MacAddress = $MacAddress -replace "[-,.:]", ""

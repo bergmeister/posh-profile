@@ -47,6 +47,36 @@ Describe 'posh-profile' {
         gh
     }
 
+    It "Save-History with filePath argument" {
+        try
+        {
+            $tempfile = [System.IO.Path]::GetTempFileName()
+            Save-History $tempfile
+            if ($null -eq $env:APPVEYOR ) # Get-History does not work in appveyor
+            {
+                Get-Content $tempfile -Raw | Should Match 'GetTempFile'
+            }
+        }
+        finally
+        {
+            Remove-Item $tempfile
+        }
+    }
+
+    It "Save-History without file path argument" {
+        $testText = "Executing random command for Save-History test"
+        Write-Verbose $testText
+        Save-History
+        $historyFile = Get-ChildItem *.PowerShellHistory
+        $historyFile | Should Not Be $null
+        $historyFile | Should BeOfType System.IO.FileInfo
+        if ($null -eq $env:APPVEYOR ) # Get-History does not work in appveyor
+        {
+            Get-Content (Get-ChildItem *.PowerShellHistory) -Raw | Should Match $testText
+        }
+        Remove-Item $historyFile
+    }
+
     It "Explorer test" {
         e
         e ([System.IO.Path]::GetTempPath())
@@ -67,13 +97,20 @@ Describe 'posh-profile' {
         }
     }
 
-    It "reimports module does not throw" {
+    It "ReImports-Module does not throw" {
         $gitUtilsModule = [System.IO.Path]::Combine((Split-Path $PSScriptRoot), 'source\gitUtils\gitUtils.psd1') 
         $gitUtilsModule | Should Exist
         Remove-Module gitUtils -Force
         Import-Module $gitUtilsModule
         ReImport-Module $gitUtilsModule
-        # Get-Module gitUtils | Should Not Be $null # TODO: find out why this fails in CI
+        if ($null -eq $env:APPVEYOR ) # the assertion below would fail in Appveyor and is therefore excluded at the moment -> TODO: find out why
+        {
+            Get-Module gitUtils | Should Not Be $null 
+        }
+    }
+
+    It "ReImport-Module throws if path is invalid" {
+        { ReImport-Module .\ModuleThatDoesNotExists.psd1 } | Should throw
     }
 
     It "touch creates a file" {
@@ -87,6 +124,11 @@ Describe 'posh-profile' {
         {
             Remove-Item $fileName
         }
+    }
+
+    It "WSL wrapper for bash" {
+        $whoami = whoami
+        b 'whoami' | Should Be $whoami
     }
 
 }
