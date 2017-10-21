@@ -30,8 +30,8 @@ Describe 'gitUtils' {
             Update-GitRepo
             Update-GitSubmoduleRemote
             Update-GitSubmodule
-            Checkout-GitRepo 'develop' 2>&1
-            Checkout-GitRepo 'feature' 2>&1           
+            New-Branch 'develop' 2>&1
+            New-Branch 'feature' 2>&1           
         }
         finally {
             Set-Location $initialLocation

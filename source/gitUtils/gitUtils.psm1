@@ -1,6 +1,5 @@
-Function Checkout-GitRepo
+Function New-Branch
 {
-	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseApprovedVerbs",'')]
 	Param
 	(
 		$argument
