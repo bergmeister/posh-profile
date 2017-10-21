@@ -47,7 +47,7 @@ Describe 'posh-profile' {
         gh
     }
 
-    It "Save-History" {
+    It "Save-History with filePath argument" {
         try
         {
             $tempfile = [System.IO.Path]::GetTempFileName()
@@ -61,6 +61,20 @@ Describe 'posh-profile' {
         {
             Remove-Item $tempfile
         }
+    }
+
+    It "Save-History without file path argument" {
+        $testText = "Executing random command for Save-History test"
+        Write-Verbose $testText
+        Save-History
+        $historyFile = Get-ChildItem *.PowerShellHistory
+        $historyFile | Should Not Be $null
+        $historyFile | Should BeOfType System.IO.FileInfo
+        if ($null -eq $env:APPVEYOR ) # Get-History does not work in appveyor
+        {
+            Get-Content (Get-ChildItem *.PowerShellHistory) -Raw | Should Match $testText
+        }
+        Remove-Item $historyFile
     }
 
     It "Explorer test" {
