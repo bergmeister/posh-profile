@@ -1,5 +1,5 @@
 [CmdLetBinding()]
-[Diagnostics.CodeAnalysis.SuppressMessage("PSUseDeclaredVarsMoreThanAssignments",'')]
+[Diagnostics.CodeAnalysis.SuppressMessage("PSUseDeclaredVarsMoreThanAssignments",'')] # the manifest exports those variables
 Param()
 
 $msBuildVS2015        = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"

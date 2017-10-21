@@ -37,13 +37,7 @@ Describe 'posh-profile' {
             Set-Location $initialLocation
         }
     }
-
-    It "Set-MsBuildExeVariablesForEnterpriseEdition supports ShouldProcess" {
-        Set-MsBuildExeVariablesForEnterpriseEdition -WhatIf
-    }
-
-    It "Set-MsBuildExeVariablesForEnterpriseEdition sets variables" {
-        Set-MsBuildExeVariablesForEnterpriseEdition
+    It "MsBuildExe variables are set" {
         $msBuildVS2015        | Should Not BeNullOrEmpty
         $msBuildVS2017        | Should Not BeNullOrEmpty
         $msBuildVS2017Preview | Should Not BeNullOrEmpty
