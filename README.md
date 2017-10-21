@@ -8,11 +8,12 @@ This is a collection of PowerShell profile helpers functions to improve efficien
 They are focussed on 3 goals:
 - Providing cmdlets for boilerplate PowerShell code that is needed for everyday tasks
 - Provide short aliases to improve your PowerShell-Fu
-- Provide a list of useful external modules (see `install-modules.ps1`) and make it faster to get started on a new machine.
+- Provide a list of useful external modules (see [install-modules.ps1](https://github.com/bergmeister/posh-profile/blob/master/source/install-modules.ps1)) and make it faster to get started on a new machine.
 
-The intend is that you just take the content of the `source` folder, install the required modules using `.\install-modules.ps1` (or modify as you wish) and import the module in your PowerShell profile as follows:
+If you want to get everything, then take the whole [source](https://github.com/bergmeister/posh-profile/tree/master/source) folder.
+Install the 3rd party modules (required by posh-profile.psd1) using `.\install-modules.ps1` (or modify as you wish) and import the module in your PowerShell profile as follows:
 ```
 
 Import-Module 'Path\To\posh-profile.psd1' -DisableNameChecking
 ```
-You will then probably get some errors because you haven't installed some of the external modules that get imported. Feel free to either remove those imports or install the module by looking up the install command in `install-modules.ps1`
+You can also just cherry pick the self contained modules in a subfolder under the [source](https://github.com/bergmeister/posh-profile/tree/master/source) folder.
