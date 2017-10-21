@@ -24,13 +24,14 @@ Describe 'gitUtils' {
             Set-Location $tempFolder
             Get-Command git | Should Not Be Null
 
-            git clone https://github.com/bergmeister/posh-profile.git
+            # git writes to stderr -> redirect it using 2>&1 https://github.com/dahlbyk/posh-git/issues/109
+            git clone https://github.com/bergmeister/posh-profile.git 2>&1
             Set-Location posh-profile
             Update-GitRepo
             Update-GitSubmoduleRemote
             Update-GitSubmodule
-            Checkout-GitRepo 'develop'
-            Checkout-GitRepo 'feature'            
+            Checkout-GitRepo 'develop' 2>&1
+            Checkout-GitRepo 'feature' 2>&1           
         }
         finally {
             Set-Location $initialLocation
