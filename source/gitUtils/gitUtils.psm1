@@ -1,13 +1,16 @@
-Function Checkout-GitRepo
+Function New-Branch
 {
-	[Diagnostics.CodeAnalysis.SuppressMessage("PSUseApprovedVerbs",'')]
+	[CmdletBinding(SupportsShouldProcess=$true)]
 	Param
 	(
-		$argument
+		$BranchName
 	)
 
-	git checkout -b $argument
-	git submodule update
+	if ($PSCmdlet.ShouldProcess("Creating new branch  $($BranchName) and updating submodule"))
+	{
+		git checkout -b $BranchName
+		git submodule update
+	}
 }
 
 Function Update-GitRepo
