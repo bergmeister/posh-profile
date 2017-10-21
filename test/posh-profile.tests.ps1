@@ -47,6 +47,19 @@ Describe 'posh-profile' {
         gh
     }
 
+    It "Save-History" {
+        try
+        {
+            $tempfile = [System.IO.Path]::GetTempFile()
+            Save-History $tempfile
+            Get-Content $tempfile -Raw | Should Contain 'GetTempFile'
+        }
+        finally
+        {
+            Remove-Item $tempfile
+        }
+    }
+
     It "Explorer test" {
         e
         e ([System.IO.Path]::GetTempPath())
