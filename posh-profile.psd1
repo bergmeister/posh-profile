@@ -71,7 +71,7 @@ NestedModules = @()
 #CmdletsToExport = '*'
  
 # Variables to export from this module
-VariablesToExport = @($msBuildVS2015, $msBuildVS2017, $msBuildVS2017Preview)
+VariablesToExport = @('msBuildVS2015', 'msBuildVS2017', 'msBuildVS2017Preview')
  
 # Aliases to export from this module
 #AliasesToExport = '*'
