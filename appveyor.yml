@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 install:
-  - ps: $PSVersionTable
+  - ps: $PSVersionTable; dotnet --version
   - ps: .\install-modules.ps1 -Verbose
 
 build_script:
