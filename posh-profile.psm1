@@ -64,7 +64,7 @@ Function OpenProfileInExplorer
 # WSL
 Function b($arguments)
 {
-	if($null -ne $arguments)
+	if ($null -ne $arguments)
 	{
 		bash -c "$arguments"
 	}
@@ -73,7 +73,8 @@ Function b($arguments)
 		bash
 	}
 }
-Function touch($arguments){b $arguments}
+
+Function touch($arguments){New-Item -ItemType File -Name $arguments}
 
 # Modules
 Function ReImport-Module
