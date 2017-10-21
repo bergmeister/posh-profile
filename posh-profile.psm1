@@ -49,7 +49,6 @@ Function Set-MsBuildExeVariablesForEnterpriseEdition
 		$global:msBuildVS2017Preview = $msBuildVS2017Preview
 	}
 }
-Set-MsBuildExeVariablesForEnterpriseEdition
 
 # uses the DOS where.exe command similar to the which command in bash
 Function which

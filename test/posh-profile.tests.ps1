@@ -53,5 +53,9 @@ Describe 'posh-profile' {
         gh
     }
 
+    It "Explorer test" {
+        e
+    }
+
 }
 

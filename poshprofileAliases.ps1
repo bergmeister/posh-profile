@@ -19,3 +19,5 @@ Set-Alias analyse Invoke-ScriptAnalyzer
 Set-Alias analyze Invoke-ScriptAnalyzer
 
 Set-Alias w with # posh-with
+
+Set-MsBuildExeVariablesForEnterpriseEdition # sets global variables but not an alias strictly speaking but should be OK for now
