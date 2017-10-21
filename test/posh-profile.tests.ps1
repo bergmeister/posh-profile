@@ -52,7 +52,10 @@ Describe 'posh-profile' {
         {
             $tempfile = [System.IO.Path]::GetTempFileName()
             Save-History $tempfile
-            Get-Content $tempfile -Raw | Should Match 'GetTempFile'
+            if ($null -ne $env:APPVEYOR ) # Get-History does not work in appveyor
+            {
+                Get-Content $tempfile -Raw | Should Match 'GetTempFile'
+            }
         }
         finally
         {
