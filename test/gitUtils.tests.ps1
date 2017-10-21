@@ -31,8 +31,12 @@ Describe 'gitUtils' {
             Update-GitSubmoduleRemote
             Update-GitSubmodule
             New-Branch 'develop' 2>&1
+            $currentBranch = &git rev-parse --abbrev-ref HEAD
+            $currentBranch | Should Be 'develop'
             git flow init -d 2>&1
-            New-Feature 'myfeaturename' 
+            New-Feature 'myfeaturename' 2>&1
+            $currentBranch = &git rev-parse --abbrev-ref HEAD
+            $currentBranch | Should Be 'myfeaturename'
         }
         finally {
             Set-Location $initialLocation
