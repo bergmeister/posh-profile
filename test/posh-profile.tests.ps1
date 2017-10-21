@@ -52,7 +52,7 @@ Describe 'posh-profile' {
         {
             $tempfile = [System.IO.Path]::GetTempFileName()
             Save-History $tempfile
-            $tempfile | Should FileContentMatch  'GetTempFile'
+            Get-Content $tempfile -Raw | Should Match 'GetTempFile'
         }
         finally
         {
