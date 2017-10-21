@@ -11,9 +11,9 @@ They are focussed on 3 goals:
 - Provide a list of useful external modules (see [install-modules.ps1](https://github.com/bergmeister/posh-profile/blob/master/source/install-modules.ps1)) and make it faster to get started on a new machine.
 
 If you want to get everything, then take the whole [source](https://github.com/bergmeister/posh-profile/tree/master/source) folder.
-Install the 3rd party modules (required by posh-profile.psd1) using `.\install-modules.ps1` (or modify as you wish) and import the module in your PowerShell profile as follows:
+Install the 3rd party modules (required by [posh-profile.psd1](https://github.com/bergmeister/posh-profile/blob/master/source/posh-profile.psd1)) using `.\install-modules.ps1` (or modify as you wish) and import the module in your PowerShell profile as follows:
 ```
 
 Import-Module 'Path\To\posh-profile.psd1' -DisableNameChecking
 ```
-You can also just cherry pick the self contained modules in a subfolder under the [source](https://github.com/bergmeister/posh-profile/tree/master/source) folder.
+You can also just cherry pick one of self contained modules that are all in their own folder in the [source](https://github.com/bergmeister/posh-profile/tree/master/source) folder.
