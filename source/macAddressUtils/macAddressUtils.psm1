@@ -23,11 +23,6 @@
     Script written by CodeBarbarian @ https://github.com/CodeBarbarian
 #>
 
-
-# Incase of a proxy
-[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
-
-
 <#
 .Synopsis
    Where the vendor mac addresses textfile will be located
