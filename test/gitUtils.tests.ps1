@@ -36,7 +36,7 @@ Describe 'gitUtils' {
             git flow init -d 2>&1
             New-Feature 'myfeaturename' 2>&1
             $currentBranch = &git rev-parse --abbrev-ref HEAD
-            $currentBranch | Should Be 'myfeaturename'
+            $currentBranch | Should Be 'feature/myfeaturename'
         }
         finally {
             Set-Location $initialLocation
