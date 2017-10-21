@@ -9,7 +9,7 @@ Describe 'dotnetCli' {
             $tempFolder = New-Item -ItemType Directory -Name tempdotnetCliTestFolder
             Set-Location $tempFolder
             Get-Command dotnet | Should Not Be Null
-            dotnet new mstest
+            dotnet new xunit
             dotnetclean
             dotnetrestore
             dotnetbuild
