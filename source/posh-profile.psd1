@@ -78,7 +78,7 @@ FunctionsToExport = @(
 )
  
 # Cmdlets to export from this module
-#CmdletsToExport = '*'
+CmdletsToExport = @()
  
 # Variables to export from this module
 VariablesToExport = @('msBuildVS2015', 'msBuildVS2017', 'msBuildVS2017Preview')
