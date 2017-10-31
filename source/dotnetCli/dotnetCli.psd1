@@ -62,7 +62,13 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'dotnetbuild',
+    'dotnetclean',
+    'dotnetpublish',
+    'dotnetrestore',
+    'dotnettest'
+)
  
 # Cmdlets to export from this module
 #CmdletsToExport = '*'

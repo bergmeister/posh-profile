@@ -65,7 +65,17 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'b'
+    'e'
+    'gh'
+    'OpenProfileInExplorer'
+    'ReImport-Module'
+    'Save-History'
+    'Set-LocationToCurrentIseItem'
+    'touch'
+    'which'
+)
  
 # Cmdlets to export from this module
 #CmdletsToExport = '*'
