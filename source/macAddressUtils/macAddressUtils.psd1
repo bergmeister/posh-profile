@@ -63,7 +63,6 @@ NestedModules = @()
  
 # Functions to export from this module
 FunctionsToExport = @(
-    'Get-DefaultDocumentPath',
     'Get-MacAddressVendor', 
     'Update-MacAddressVendor' 
 )
