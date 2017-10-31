@@ -62,7 +62,15 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'New-Branch',
+    'New-Feature',
+    'New-RemoteBranch',
+    'Update-BranchFromDevelop',
+    'Update-GitRepo',
+    'Update-GitSubmodule',
+    'Update-GitsubmoduleRemote'
+)
  
 # Cmdlets to export from this module
 #CmdletsToExport = '*'
@@ -71,7 +79,11 @@ NestedModules = @()
 VariablesToExport = @()
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'g',
+    'update',
+    'updateSub'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

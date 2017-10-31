@@ -65,7 +65,17 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'b'
+    'e'
+    'gh'
+    'OpenProfileInExplorer'
+    'ReImport-Module'
+    'Save-History'
+    'Set-LocationToCurrentIseItem'
+    'touch'
+    'which'
+)
  
 # Cmdlets to export from this module
 #CmdletsToExport = '*'
@@ -74,7 +84,20 @@ NestedModules = @()
 VariablesToExport = @('msBuildVS2015', 'msBuildVS2017', 'msBuildVS2017Preview')
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'tp'
+    'ripmo'
+    'hh'
+    'f'
+    'vim'
+    'vi'
+    'v'
+    'CA'
+    'PSCA'
+    'analyse'
+    'analyze'
+    'w'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

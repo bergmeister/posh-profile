@@ -62,7 +62,13 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'dotnetbuild',
+    'dotnetclean',
+    'dotnetpublish',
+    'dotnetrestore',
+    'dotnettest'
+)
  
 # Cmdlets to export from this module
 #CmdletsToExport = '*'
@@ -71,7 +77,15 @@ NestedModules = @()
 VariablesToExport = '*'
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'd'
+    'dn'
+    'dnc'
+    'dnr'
+    'dnb'
+    'dnt'
+    'dnp'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

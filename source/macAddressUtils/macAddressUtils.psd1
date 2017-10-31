@@ -62,10 +62,14 @@ FormatsToProcess = @()
 NestedModules = @()
  
 # Functions to export from this module
-#FunctionsToExport = '*'
+FunctionsToExport = @(
+    'Get-DefaultDocumentPath',
+    'Get-MacAddressVendor', 
+    'Update-MacAddressVendor' 
+)
  
 # Cmdlets to export from this module
-CmdletsToExport = @('Get-MacAddressVendor', 'Update-MacAddressVendor', 'Get-DefaultDocumentPath')
+# CmdletsToExport = '*'
  
 # Variables to export from this module
 VariablesToExport =  @()
