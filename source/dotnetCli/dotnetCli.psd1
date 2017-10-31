@@ -77,7 +77,15 @@ FunctionsToExport = @(
 VariablesToExport = '*'
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'd'
+    'dn'
+    'dnc'
+    'dnr'
+    'dnb'
+    'dnt'
+    'dnp'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

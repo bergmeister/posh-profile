@@ -84,7 +84,20 @@ FunctionsToExport = @(
 VariablesToExport = @('msBuildVS2015', 'msBuildVS2017', 'msBuildVS2017Preview')
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'tp'
+    'ripmo'
+    'hh'
+    'f'
+    'vim'
+    'vi'
+    'v'
+    'CA'
+    'PSCA'
+    'analyse'
+    'analyze'
+    'w'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

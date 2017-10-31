@@ -79,7 +79,11 @@ FunctionsToExport = @(
 VariablesToExport = @()
  
 # Aliases to export from this module
-#AliasesToExport = '*'
+AliasesToExport = @(
+    'g',
+    'update',
+    'updateSub'
+)
  
 # List of all modules packaged with this module
 ModuleList = @()

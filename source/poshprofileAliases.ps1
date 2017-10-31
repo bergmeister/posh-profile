@@ -15,7 +15,6 @@ Set-Alias v vim
 Set-Alias CA Invoke-ScriptAnalyzer
 Set-Alias PSCA Invoke-ScriptAnalyzer
 Set-Alias analyse Invoke-ScriptAnalyzer
-Set-Alias analyse Invoke-ScriptAnalyzer
 Set-Alias analyze Invoke-ScriptAnalyzer
 
 Set-Alias w with # posh-with
