@@ -27,6 +27,9 @@ Install-ModuleOnlyIfNotAlreadyInstalled Jump.Location     -Scope CurrentUser -Fo
 Write-Verbose 'Installing chocolatey'
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+# posh-git
+choco install poshgit
+
 # PoShFuck a slightly vulgar typo correection helper: https://github.com/mattparkes/PoShFuck
 try
 {

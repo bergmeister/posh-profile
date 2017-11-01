@@ -44,7 +44,12 @@ CLRVersion = ''
 ProcessorArchitecture = ''
  
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('Jump.Location', 'posh-docker', 'posh-with', 'PoShFuck',
+RequiredModules = @(
+					'Jump.Location',
+					'posh-docker',
+					'posh-docker',
+					'posh-with',
+					'PoShFuck',
                     "$PSScriptRoot\macAddressUtils\macAddressUtils.psd1",
                     "$PSScriptRoot\dotnetCli\dotnetCli.psd1",
                     "$PSScriptRoot\gitUtils\gitUtils.psd1")
