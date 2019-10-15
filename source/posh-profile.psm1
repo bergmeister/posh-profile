@@ -94,3 +94,12 @@ Function ReImport-Module
 	Remove-Module $moduleName
 	Import-Module $Path
 }
+
+Function Get-Weather
+{
+    # Fetch pretty weather
+    # Days 0:Now; 1:Today; 2:Tomorrow; 3:Day After
+    $days = 3
+    (Invoke-WebRequest -Uri "https://wttr.in/?$days" -UserAgent 'Curl').Content
+}
+
